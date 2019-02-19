@@ -72,7 +72,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .terminal {
   border: 1px solid #cccccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -133,12 +133,12 @@ export default {
   font-family: "Courier New", Courier, monospace;
 }
 
-.lines .line > .argument {
+.lines .line .argument {
   color: #2c82c9;
   font-family: "Courier New", Courier, monospace;
 }
 
-.lines .line > .comment {
+.lines .line .comment {
   color: #3fc380;
   font-family: "Courier New", Courier, monospace;
 }
