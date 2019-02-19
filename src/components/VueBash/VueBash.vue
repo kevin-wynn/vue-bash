@@ -133,12 +133,12 @@ export default {
   font-family: "Courier New", Courier, monospace;
 }
 
-.line .argument {
+.lines .line > .argument {
   color: #2c82c9;
   font-family: "Courier New", Courier, monospace;
 }
 
-.line .comment {
+.lines .line > .comment {
   color: #3fc380;
   font-family: "Courier New", Courier, monospace;
 }
@@ -155,7 +155,7 @@ export default {
   background: #333;
 }
 
-.terminal.light .content .lines .line {
+.terminal.dark .content .lines .line {
   color: #fff;
 }
 </style>
