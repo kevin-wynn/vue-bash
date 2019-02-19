@@ -50,5 +50,5 @@
     "*.json",
     "*.js"
   ],
-  "main": "./dist/vue-bash/vue-bash.common.js"
+  "main": "./dist/vue-bash.common.js"
 }
