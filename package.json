@@ -1,6 +1,21 @@
 {
   "name": "vue-bash",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "author": "Kevin Wynn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevin-wynn/vue-bash/issues"
+  },
+  "keywords": [
+    "vue",
+    "terminal",
+    "bash"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin-wynn/vue-bash.git"
+  },
+  "homepage": "https://github.com/kevin-wynn/vue-bash",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
