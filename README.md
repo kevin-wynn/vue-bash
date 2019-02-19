@@ -1,6 +1,6 @@
 # vue-bash
 
-Vue Bash is a simple lightweight component that allows you to show off bash components and commands in a beautiful way.
+Vue Bash is a simple lightweight component that allows you to show off bash components and commands in a beautiful way. There is currently only sytanx highlighting for bash arguments and comments. In future releases I hope to allow a language prop to select your language syntax highlighting.
 
 ## Installation
 
@@ -23,6 +23,14 @@ Currently the terminal supports only a few props. But more are to come:
 | content | Array  | Array of strings per line.                                      |
 
 ## Example
+
+### Light Theme
+
+!()[light-theme.png]
+
+### Dark Theme
+
+!()[dark-theme.png]
 
 ```
 <vue-bash
