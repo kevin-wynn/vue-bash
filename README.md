@@ -26,11 +26,11 @@ Currently the terminal supports only a few props. But more are to come:
 
 ### Light Theme
 
-!()[light-theme.png]
+![](light-theme.png)
 
 ### Dark Theme
 
-!()[dark-theme.png]
+![](dark-theme.png)
 
 ```
 <vue-bash
