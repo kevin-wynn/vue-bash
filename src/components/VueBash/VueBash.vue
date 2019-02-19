@@ -147,7 +147,7 @@ export default {
   background: #fff;
 }
 
-.terminal.light.content.lines.line {
+.terminal.light .content .lines .line {
   color: #666;
 }
 
@@ -155,7 +155,7 @@ export default {
   background: #333;
 }
 
-.terminal.light.content.lines.line {
+.terminal.light .content .lines .line {
   color: #fff;
 }
 </style>
