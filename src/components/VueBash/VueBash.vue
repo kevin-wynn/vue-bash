@@ -103,13 +103,13 @@ export default {
   margin-right: 5px;
 }
 
-.actions.action.red {
+.actions .action.red {
   background: #e74c3c;
 }
-.actions.action.yellow {
+.actions .action.yellow {
   background: #f7ca18;
 }
-.actions.action.green {
+.actions .action.green {
   background: #2ecc71;
 }
 
@@ -133,12 +133,12 @@ export default {
   font-family: "Courier New", Courier, monospace;
 }
 
-.line > .argument {
+.line .argument {
   color: #2c82c9;
   font-family: "Courier New", Courier, monospace;
 }
 
-.line > .comment {
+.line .comment {
   color: #3fc380;
   font-family: "Courier New", Courier, monospace;
 }
