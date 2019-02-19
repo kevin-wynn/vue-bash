@@ -1,4 +1,11 @@
 # vue-bash
+![npm](https://img.shields.io/npm/v/vue-bash.svg)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/kevin-wynn/vue-bash.svg)
+![npm](https://img.shields.io/npm/dt/vue-bash.svg)
+![GitHub issues](https://img.shields.io/github/issues-raw/kevin-wynn/vue-bash.svg)
+![NPM](https://img.shields.io/npm/l/vue-bash.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/kevin-wynn/vue-bash.svg)
+
 
 Vue Bash is a simple lightweight component that allows you to show off bash components and commands in a beautiful way. There is currently only sytanx highlighting for bash arguments and comments. In future releases I hope to allow a language prop to select your language syntax highlighting.
 
