@@ -8,7 +8,7 @@
       </div>
       <div class="title">{{ title }}</div>
     </div>
-    <div class="content">
+    <div class="content" :style="{minHeight: height}">
       <ul class="lines" :class="{lined: showLineNumbers || showSymbol}">
         <li class="line" v-for="(line, index) in lines" :key="index">
           <span v-if="showLineNumbers" class="line-number">{{ index + 1 }}</span>
@@ -86,7 +86,6 @@ export default {
 
 <style>
 .terminal {
-  border: 1px solid #cccccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
@@ -99,7 +98,7 @@ export default {
   justify-content: flex-start;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom: 1px solid #cccccc;
+  border: 1px solid #cccccc;
 }
 
 .actions {
@@ -137,6 +136,11 @@ export default {
 
 .content {
   padding: 15px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .line-number {
@@ -171,7 +175,7 @@ export default {
   font-family: "Courier New", Courier, monospace;
 }
 
-.terminal.light {
+.terminal.light .content {
   background: #fff;
 }
 
@@ -179,7 +183,7 @@ export default {
   color: #666;
 }
 
-.terminal.dark {
+.terminal.dark .content {
   background: #333;
 }
 
