@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     transformLine: function(line) {
-      const commentsRegex = /(\#[\w\'\s\r\n\*]*\#)|(#[\w\s\']*)|(\#[\-\-\s\w\>\/]*#)/gm;
+      const commentsRegex = /(#[\w'\s\r\n*]*#)|(#[\w\s']*)|(#[-\-\s\w>/]*#)/gm;
       const wordsRegex = /"[^"]+"|'[^']+'|\S+/g;
 
       if (line.match(commentsRegex) != null) {
