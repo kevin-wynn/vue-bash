@@ -9,8 +9,11 @@
       <div class="title">{{ title }}</div>
     </div>
     <div class="content">
-      <ul class="lines" v-for="(line, index) in lines" :key="index">
-        <li class="line" v-html="transformLine(line)"></li>
+      <ul class="lines" :class="{lined: showLineNumbers}">
+        <li class="line" v-for="(line, index) in lines" :key="index">
+          <span v-if="showLineNumbers" class="line-number">{{ index + 1 }}</span>
+          <span v-html="transformLine(line)"></span>
+        </li>
       </ul>
     </div>
   </div>
@@ -38,6 +41,10 @@ export default {
     },
     content: {
       type: Array
+    },
+    showLineNumbers: {
+      type: Boolean,
+      default: false
     }
   },
   data: function() {
@@ -127,18 +134,34 @@ export default {
   padding: 15px;
 }
 
-.lines .line {
+.line-number {
+  margin-right: 10px;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: -20px;
+  color: #999;
+  font-size: 12px;
+}
+
+.lines.lined {
+  padding-left: 20px;
+}
+
+.line {
   display: block;
   line-height: 22px;
   font-family: "Courier New", Courier, monospace;
 }
 
-.lines .line .argument {
+.line span {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.argument {
   color: #2c82c9;
   font-family: "Courier New", Courier, monospace;
 }
 
-.lines .line .comment {
+.comment {
   color: #3fc380;
   font-family: "Courier New", Courier, monospace;
 }
