@@ -61,6 +61,7 @@ export default {
     transformLine: function(line) {
       const commentsRegex = /(#[\w'\s\r\n*]*#)|(#[\w\s']*)|(#[-\-\s\w>/]*#)/gm;
       const wordsRegex = /"[^"]+"|'[^']+'|\S+/g;
+      const digitRegex = /\d/;
 
       if (line.match(commentsRegex) != null) {
         line = line.replace(
@@ -76,6 +77,12 @@ export default {
           word.indexOf("-") > -1
             ? `<span class="argument">${word}</span>`
             : word;
+      });
+
+      words.forEach((word, i, arr) => {
+        arr[i] = digitRegex.test(word)
+          ? `<span class="number">${word}</span>`
+          : word;
       });
 
       return words.join(" ");
@@ -172,6 +179,11 @@ export default {
 
 .comment {
   color: #3fc380;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.number {
+  color: #f89406;
   font-family: "Courier New", Courier, monospace;
 }
 
