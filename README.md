@@ -21,14 +21,15 @@ Installation is straightforward and easy. You can install globally in your `main
 
 Currently the terminal supports only a few props. But more are to come:
 
-| Prop            | Type    | Description                                                     |
-| --------------- | ------- | --------------------------------------------------------------- |
-| theme           | String  | Can accept `light` and `dark` as a theme choice.                |
-| width           | String  | Width of the terminal in either `%` or `px`. Default is `100%`  |
-| height          | String  | Height of the terminal in either `%` or `px`. Default is `100%` |
-| title           | String  | Title of the terminal. Default is `Terminal`                    |
-| content         | Array   | Array of strings per line.                                      |
-| showLineNumbers | Boolean | Shows a line number per line. Default is `false`                |
+| Prop            | Type    | Description                                                          |
+| --------------- | ------- | -------------------------------------------------------------------- |
+| theme           | String  | Can accept `light` and `dark` as a theme choice. Defaults to `light` |
+| width           | String  | Width of the terminal in either `%` or `px`. Defaults to `100%`      |
+| height          | String  | Height of the terminal in either `%` or `px`. Defaults to `100%`     |
+| title           | String  | Title of the terminal. Defaults to `Terminal`                        |
+| content         | Array   | Array of strings per line.                                           |
+| showLineNumbers | Boolean | Shows a line number per line. Defaults to `false`                    |
+| showSymbol      | Boolean | Shows a `$` per line. Defaults to `false`                            |
 
 ## Example
 

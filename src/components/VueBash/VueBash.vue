@@ -9,9 +9,10 @@
       <div class="title">{{ title }}</div>
     </div>
     <div class="content">
-      <ul class="lines" :class="{lined: showLineNumbers}">
+      <ul class="lines" :class="{lined: showLineNumbers || showSymbol}">
         <li class="line" v-for="(line, index) in lines" :key="index">
           <span v-if="showLineNumbers" class="line-number">{{ index + 1 }}</span>
+          <span v-if="showSymbol" class="line-number">$</span>
           <span v-html="transformLine(line)"></span>
         </li>
       </ul>
@@ -43,6 +44,10 @@ export default {
       type: Array
     },
     showLineNumbers: {
+      type: Boolean,
+      default: false
+    },
+    showSymbol: {
       type: Boolean,
       default: false
     }
