@@ -1,5 +1,5 @@
 <template>
-  <div class="terminal" :style="{ minWidth: width, minHeight: height }" :class="theme">
+  <div class="vue-bash-terminal" :style="{ minWidth: width, minHeight: height }" :class="theme">
     <div class="header-bar">
       <div class="actions">
         <span class="action red"></span>
@@ -91,115 +91,125 @@ export default {
 };
 </script>
 
-<style>
-.terminal {
+<style lang="scss" scoped>
+.vue-bash-terminal {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-}
 
-.header-bar {
-  width: 100%;
-  background: #ececec;
-  padding: 5px;
-  display: flex;
-  justify-content: flex-start;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border: 1px solid #cccccc;
-}
+  .header-bar {
+    width: 100%;
+    background: #ececec;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid #cccccc;
+  }
+  .actions {
+    flex-direction: row;
+    margin-left: 5px;
+    .action {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-flex;
+      margin-right: 5px;
 
-.actions {
-  flex-direction: row;
-  margin-left: 5px;
-}
+      &.red {
+        background: #e74c3c;
+      }
 
-.actions .action {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-flex;
-  margin-right: 5px;
-}
+      &.yellow {
+        background: #f7ca18;
+      }
 
-.actions .action.red {
-  background: #e74c3c;
-}
-.actions .action.yellow {
-  background: #f7ca18;
-}
-.actions .action.green {
-  background: #2ecc71;
-}
+      &.green {
+        background: #2ecc71;
+      }
+    }
+  }
 
-.title {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-self: center;
-  margin-left: -50px;
-  font-size: 14px;
-  color: #333;
-}
+  .title {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-self: center;
+    margin-left: -50px;
+    font-size: 14px;
+    color: #333;
+  }
 
-.content {
-  padding: 15px;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+  .content {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 
-.line-number {
-  margin-right: 10px;
-  font-family: "Courier New", Courier, monospace;
-  margin-left: -20px;
-  color: #999;
-  font-size: 12px;
-}
+  .line-number {
+    margin-right: 10px;
+    font-family: "Courier New", Courier, monospace;
+    margin-left: -20px;
+    color: #999;
+    font-size: 12px;
+  }
 
-.lines.lined {
-  padding-left: 20px;
-}
+  .lines {
+    .lined {
+      padding-left: 20px;
+    }
 
-.line {
-  display: block;
-  line-height: 22px;
-  font-family: "Courier New", Courier, monospace;
-}
+    .line {
+      display: block;
+      line-height: 22px;
+      font-family: "Courier New", Courier, monospace;
 
-.line span {
-  font-family: "Courier New", Courier, monospace;
-}
+      & span {
+        font-family: "Courier New", Courier, monospace;
+      }
 
-.argument {
-  color: #2c82c9;
-  font-family: "Courier New", Courier, monospace;
-}
+      /deep/ .argument {
+        color: #2c82c9;
+        font-family: "Courier New", Courier, monospace;
+      }
 
-.comment {
-  color: #3fc380;
-  font-family: "Courier New", Courier, monospace;
-}
+      /deep/ .comment {
+        color: #3fc380;
+        font-family: "Courier New", Courier, monospace;
+      }
 
-.number {
-  color: #f89406;
-  font-family: "Courier New", Courier, monospace;
-}
+      /deep/ .number {
+        color: #f89406;
+        font-family: "Courier New", Courier, monospace;
+      }
+    }
+  }
 
-.terminal.light .content {
-  background: #fff;
-}
+  &.light {
+    .content {
+      background: #fff;
 
-.terminal.light .content .lines .line {
-  color: #666;
-}
+      .lines {
+        .line {
+          color: #666;
+        }
+      }
+    }
+  }
 
-.terminal.dark .content {
-  background: #333;
-}
+  &.dark {
+    .content {
+      background: #333;
 
-.terminal.dark .content .lines .line {
-  color: #fff;
+      .lines {
+        .line {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
 </style>
