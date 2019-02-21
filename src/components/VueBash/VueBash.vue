@@ -158,7 +158,7 @@ export default {
   }
 
   .lines {
-    .lined {
+    &.lined {
       padding-left: 20px;
     }
 
