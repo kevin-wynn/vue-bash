@@ -1891,7 +1891,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0bacb085-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueBash.vue?vue&type=template&id=0f50a304&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"487d1556-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueBash.vue?vue&type=template&id=0f50a304&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-bash-terminal",class:_vm.theme,style:({ minWidth: _vm.width, minHeight: _vm.height })},[_c('div',{staticClass:"header-bar"},[_vm._m(0),_c('div',{staticClass:"title"},[_vm._v(_vm._s(_vm.title))])]),_c('div',{staticClass:"content",style:({minHeight: _vm.height})},[_c('ul',{staticClass:"lines",class:{lined: _vm.showLineNumbers || _vm.showSymbol}},_vm._l((_vm.lines),function(line,index){return _c('li',{key:index,staticClass:"line"},[(_vm.showLineNumbers)?_c('span',{staticClass:"line-number"},[_vm._v(_vm._s(index + 1))]):_vm._e(),(_vm.showSymbol)?_c('span',{staticClass:"line-number"},[_vm._v("$")]):_vm._e(),_c('span',{domProps:{"innerHTML":_vm._s(_vm.transformLine(line))}})])}),0)])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"actions"},[_c('span',{staticClass:"action red"}),_c('span',{staticClass:"action yellow"}),_c('span',{staticClass:"action green"})])}]
 
@@ -2114,9 +2114,7 @@ var component = normalizeComponent(
 // CONCATENATED MODULE: ./src/components/index.js
 
 /* harmony default export */ var components = (VueBash);
-
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
-/* concated harmony reexport VueBash */__webpack_require__.d(__webpack_exports__, "VueBash", function() { return VueBash; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (components);
