@@ -14,8 +14,8 @@ Vue Bash is a simple lightweight component that allows you to show off bash comp
 Installation is straightforward and easy. You can install globally in your `main.js` or `import` directly to your components.
 
 1. `npm i --save vue-bash` to install the package
-2. In your `main.js` file `import 'vue-bash'`
-3. Use `<vue-bash/>` anywhere in your app.
+2. Import vue bash `import VueBash from "vue-bash"`
+3. Use `<VueBash/>` in your template.
 
 ## Props
 
