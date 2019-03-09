@@ -8,19 +8,25 @@
       </div>
       <div class="title">{{ title }}</div>
     </div>
-    <div class="content" :style="{minHeight: height}">
-      <ul class="lines" :class="{lined: showLineNumbers || showSymbol}">
-        <li class="line" v-for="(line, index) in lines" :key="index">
-          <span v-if="showLineNumbers" class="line-number">{{ index + 1 }}</span>
-          <span v-if="showSymbol" class="line-number">$</span>
-          <span v-html="transformLine(line)"></span>
-        </li>
-      </ul>
+    <div class='content' :style="{minHeight: height}">
+      <pre class="code-container">
+        <code :class="language">
+          <slot></slot>
+        </code>
+      </pre>
     </div>
   </div>
 </template>
 
 <script>
+// import hljs from "highlight.js";
+import hljs from "highlight.js/lib/highlight";
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+import xml from "highlight.js/lib/languages/xml";
+import bash from "highlight.js/lib/languages/bash";
+import "highlight.js/styles/github.css";
+
 export default {
   name: "VueBash",
   props: {
@@ -40,9 +46,6 @@ export default {
       type: String,
       default: "Terminal"
     },
-    content: {
-      type: Array
-    },
     showLineNumbers: {
       type: Boolean,
       default: false
@@ -50,48 +53,22 @@ export default {
     showSymbol: {
       type: Boolean,
       default: false
+    },
+    language: {
+      type: String
     }
   },
-  data: function() {
-    return {
-      lines: this.content
-    };
-  },
-  methods: {
-    transformLine: function(line) {
-      const commentsRegex = /(#[\w'\s\r\n*]*#)|(#[\w\s']*)|(#[-\-\s\w>/]*#)/gm;
-      const wordsRegex = /"[^"]+"|'[^']+'|\S+/g;
-      const digitRegex = /\d/;
-
-      if (line.match(commentsRegex) != null) {
-        line = line.replace(
-          line.match(commentsRegex)[0],
-          `<span class="comment">${line.match(commentsRegex)[0]}</span>`
-        );
-      }
-
-      let words = line.match(wordsRegex);
-
-      words.forEach((word, i, arr) => {
-        arr[i] =
-          word.indexOf("-") > -1
-            ? `<span class="argument">${word}</span>`
-            : word;
-      });
-
-      words.forEach((word, i, arr) => {
-        arr[i] = digitRegex.test(word)
-          ? `<span class="number">${word}</span>`
-          : word;
-      });
-
-      return words.join(" ");
-    }
+  mounted: function() {
+    hljs.registerLanguage("javascript", javascript);
+    hljs.registerLanguage("css", css);
+    hljs.registerLanguage("xml", xml);
+    hljs.registerLanguage("bash", bash);
+    hljs.initHighlightingOnLoad();
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .vue-bash-terminal {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -141,74 +118,178 @@ export default {
   }
 
   .content {
-    padding: 15px;
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    position: relative;
   }
 
-  .line-number {
-    margin-right: 10px;
-    font-family: "Courier New", Courier, monospace;
-    margin-left: -20px;
-    color: #999;
-    font-size: 12px;
+  .hljs {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 25px;
+    display: block;
+    overflow-x: auto;
   }
 
-  .lines {
-    &.lined {
-      padding-left: 20px;
-    }
-
-    .line {
-      display: block;
-      line-height: 22px;
-      font-family: "Courier New", Courier, monospace;
-
-      & span {
-        font-family: "Courier New", Courier, monospace;
-      }
-
-      /deep/ .argument {
-        color: #2c82c9;
-        font-family: "Courier New", Courier, monospace;
-      }
-
-      /deep/ .comment {
-        color: #3fc380;
-        font-family: "Courier New", Courier, monospace;
-      }
-
-      /deep/ .number {
-        color: #f89406;
-        font-family: "Courier New", Courier, monospace;
-      }
-    }
-  }
-
+  // atom one light
   &.light {
     .content {
-      background: #fff;
-
-      .lines {
-        .line {
-          color: #666;
-        }
-      }
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+    .code-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hljs {
+      color: #383a42;
+      background: #fafafa;
+    }
+    .hljs-comment,
+    .hljs-quote {
+      color: #a0a1a7;
+      font-style: italic;
+    }
+    .hljs-doctag,
+    .hljs-keyword,
+    .hljs-formula {
+      color: #a626a4;
+    }
+    .hljs-section,
+    .hljs-name,
+    .hljs-selector-tag,
+    .hljs-deletion,
+    .hljs-subst {
+      color: #e45649;
+    }
+    .hljs-literal {
+      color: #0184bb;
+    }
+    .hljs-string,
+    .hljs-regexp,
+    .hljs-addition,
+    .hljs-attribute,
+    .hljs-meta-string {
+      color: #50a14f;
+    }
+    .hljs-built_in,
+    .hljs-class .hljs-title {
+      color: #c18401;
+    }
+    .hljs-attr,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo,
+    .hljs-number {
+      color: #986801;
+    }
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-link,
+    .hljs-meta,
+    .hljs-selector-id,
+    .hljs-title {
+      color: #4078f2;
+    }
+    .hljs-emphasis {
+      font-style: italic;
+    }
+    .hljs-strong {
+      font-weight: bold;
+    }
+    .hljs-link {
+      text-decoration: underline;
     }
   }
 
+  // atom one dark
   &.dark {
     .content {
-      background: #333;
-
-      .lines {
-        .line {
-          color: #fff;
-        }
-      }
+      border-bottom: 1px solid #111;
+      border-right: 1px solid #111;
+      border-left: 1px solid #111;
+    }
+    .code-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hljs {
+      color: #abb2bf;
+      background: #282c34;
+    }
+    .hljs-comment,
+    .hljs-quote {
+      color: #5c6370;
+      font-style: italic;
+    }
+    .hljs-doctag,
+    .hljs-keyword,
+    .hljs-formula {
+      color: #c678dd;
+    }
+    .hljs-section,
+    .hljs-name,
+    .hljs-selector-tag,
+    .hljs-deletion,
+    .hljs-subst {
+      color: #e06c75;
+    }
+    .hljs-literal {
+      color: #56b6c2;
+    }
+    .hljs-string,
+    .hljs-regexp,
+    .hljs-addition,
+    .hljs-attribute,
+    .hljs-meta-string {
+      color: #98c379;
+    }
+    .hljs-built_in,
+    .hljs-class .hljs-title {
+      color: #e6c07b;
+    }
+    .hljs-attr,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-type,
+    .hljs-selector-class,
+    .hljs-selector-attr,
+    .hljs-selector-pseudo,
+    .hljs-number {
+      color: #d19a66;
+    }
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-link,
+    .hljs-meta,
+    .hljs-selector-id,
+    .hljs-title {
+      color: #61aeee;
+    }
+    .hljs-emphasis {
+      font-style: italic;
+    }
+    .hljs-strong {
+      font-weight: bold;
+    }
+    .hljs-link {
+      text-decoration: underline;
     }
   }
 }
