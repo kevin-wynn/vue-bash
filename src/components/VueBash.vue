@@ -63,7 +63,7 @@ export default {
     hljs.registerLanguage("css", css);
     hljs.registerLanguage("xml", xml);
     hljs.registerLanguage("bash", bash);
-    hljs.initHighlightingOnLoad();
+    hljs.initHighlighting();
   }
 };
 </script>
